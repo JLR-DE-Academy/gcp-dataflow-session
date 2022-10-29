@@ -7,7 +7,7 @@ from random import randint
 import time
 
 
-# TODO(developer)
+# TODO (change to yours)
 PROJECT_ID = "jlr-dl-cat-training"
 TOPIC_ID = "temp-2022-jlr-de-dataflow-ben"
 
