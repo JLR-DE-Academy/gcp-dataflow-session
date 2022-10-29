@@ -1,0 +1,40 @@
+# Run pipeline locally
+python beam_stream_bikesharing.py \
+    --project=jlr-dl-cat-training \
+    --runner=DirectRunner \
+    --temp_location=gs://2022-jlr-de-training-dataflow-ben/bikesharing/temp 
+
+
+# Deploy pipeline to Google Cloud Dataflow
+python beam_stream_bikesharing.py \
+    --streaming \
+    --project=jlr-dl-cat-training \
+    --region=europe-west1 \
+    --runner=DataflowRunner \
+    --temp_location=gs://2022-jlr-de-training-dataflow-ben/bikesharing/temp \
+    --job_name=ben-stream-bikesharing
+
+---------------------------------------------------------------
+# Run pipeline locally
+python beam_stream_bikesharing_aggr.py \
+    --project=jlr-dl-cat-training \
+    --runner=DirectRunner \
+    --temp_location=gs://2022-jlr-de-training-dataflow-ben/bikesharing_aggr/temp 
+
+
+# Deploy pipeline to Google Cloud Dataflow
+python beam_stream_bikesharing_aggr.py \
+    --streaming \
+    --project=jlr-dl-cat-training \
+    --region=europe-west1 \
+    --runner=DataflowRunner \
+    --temp_location=gs://2022-jlr-de-training-dataflow-ben/bikesharing_aggr/temp \
+    --job_name=ben-stream-bikesharing-aggr
+
+---------------------------------------------------------------
+# check the result
+select *
+from `jlr-dl-cat-training.2022_temp_jlr_de_dataflow_ben.bike_trips_streaming`
+
+select *
+from `jlr-dl-cat-training.2022_temp_jlr_de_dataflow_ben.bike_trips_streaming_sum_aggr`

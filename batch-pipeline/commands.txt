@@ -1,0 +1,2 @@
+# Run pipeline locally
+python pipeline.py --input data.csv --output output --runner DirectRunner
