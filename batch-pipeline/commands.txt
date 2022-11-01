@@ -1,2 +1,15 @@
 # Run pipeline locally
 python pipeline.py --input data.csv --output output --runner DirectRunner
+
+
+# Deploy pipeline to Google Cloud Dataflow
+python pipeline.py \
+--input gs://2022-jlr-de-training-dataflow-ben/input/data.csv \
+--output gs://2022-jlr-de-training-dataflow-ben/output \
+--runner DataflowRunner \
+--project jlr-dl-cat-training \
+--staging_location gs://2022-jlr-de-training-dataflow-ben/staging \
+--temp_location gs://2022-jlr-de-training-dataflow-ben/temp \
+--region europe-west2 \
+--job_name jlr-de-batch-processing-ben \
+--save_main_session
